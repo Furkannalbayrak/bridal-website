@@ -23,7 +23,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* About */}
           <div className="col-span-1">
-            <h3 className="text-xl font-playfair font-bold text-rose-300 mb-4">BridalElegance</h3>
+            <h3 className="text-xl font-playfair font-bold text-rose-300 mb-4">Sevgilim Gelinlik</h3>
             <p className="text-sm mb-4">
               En özel gününüz için şık ve zarif gelinliklerimizle yanınızdayız. Hayalinizdeki gelinliği bulmanız için buradayız.
             </p>
@@ -61,7 +61,7 @@ const Footer = () => {
 
           {/* Collections */}
           <div>
-            <h4 className="font-semibold text-gray-800 mb-4">Koleksiyonlar</h4>
+            <h4 className="font-semibold text-gray-800 mb-4">Modeller</h4>
             <ul className="space-y-2">
               <li><a href="#" className="text-sm hover:text-rose-300 transition-colors duration-300">2025 Koleksiyonu</a></li>
               <li><a href="#" className="text-sm hover:text-rose-300 transition-colors duration-300">Özel Tasarımlar</a></li>
