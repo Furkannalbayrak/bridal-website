@@ -7,18 +7,14 @@ import Features from './components/Features'
 import Testimonials from './components/Testimonials'
 import Collection from './components/Collection'
 import Footer from './components/Footer'
+import RouterConfig from './config/RouterConfig'
 
 function App() {
 
   return (
     <>
       <div>
-          <Header/>
-          <Hero/>
-          <Collection/>
-          <About/>
-          <Features/>
-          <Testimonials/>
+          <RouterConfig/>
           <Footer/>
       </div>
     </>
