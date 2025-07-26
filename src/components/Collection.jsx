@@ -1,26 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Collection = () => {
-  // Koleksiyon kategorileri
-  const categories = [
-    'Tümü',
-    'Prenses Kesim',
-    'Balık Sırtı',
-    'A-Line',
-    'Etek-Ceket',
-    'Uzun Kollu'
-  ];
 
-  // Örnek gelinlik verileri
+  const navigate = useNavigate()
+
   const [dresses, setDresses] = useState([
     {
       id: 1,
       name: 'Prenses Kesim Gelinlik',
       price: '12.999 TL',
       category: 'Prenses Kesim',
-      image: 'https://images.unsplash.com/photo-1596704017255-ee658a1e5eaf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      isNew: true,
+      image: 'https://www.yesimgelinlik.com/wp-content/uploads/2022/08/prenses-gelinlik-modeli-33-4056835395.jpg',
       isSale: false,
       filters: {
         etekTipi: 'prenses',
@@ -35,8 +26,7 @@ const Collection = () => {
       name: 'Balık Sırtı Gelinlik',
       price: '14.999 TL',
       category: 'Balık Sırtı',
-      image: 'https://images.unsplash.com/photo-1590845947676-fa2576f401d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      isNew: false,
+      image: 'https://alissenuera.com/cdn/shop/files/Alisse-nuerA-Dusuk-Omuzlu-Drapeli-Sade-Helen-Gelinlik-Modeli-Front-Image_2048x.jpg?v=1683900280',
       isSale: true,
       filters: {
         etekTipi: 'balik-sirti',
@@ -52,8 +42,7 @@ const Collection = () => {
       price: '11.999 TL',
       originalPrice: '13.999 TL',
       category: 'A-Line',
-      image: 'https://images.unsplash.com/photo-1596694537169-6f9f5a7f5e3c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      isNew: false,
+      image: 'https://cdn.dsmcdn.com/ty784/product/media/images/20230317/16/306358829/889458153/1/1_org_zoom.jpg',
       isSale: true,
       filters: {
         etekTipi: 'a-line',
@@ -68,8 +57,7 @@ const Collection = () => {
       name: 'Uzun Kollu Gelinlik',
       price: '16.999 TL',
       category: 'Uzun Kollu',
-      image: 'https://images.unsplash.com/photo-1596704017255-ee658a1e5eaf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      isNew: true,
+      image: 'https://www.yesimgelinlik.com/wp-content/uploads/2025/01/Urun1-700x1050.jpg',
       isSale: false,
       filters: {
         etekTipi: 'prenses',
@@ -84,8 +72,7 @@ const Collection = () => {
       name: 'Etek-Ceket Gelinlik',
       price: '15.999 TL',
       category: 'Etek-Ceket',
-      image: 'https://images.unsplash.com/photo-1596704017255-ee658a1e5eaf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      isNew: false,
+      image: 'https://medihacambaz.com/cdn/shop/files/luxe-22-el-yapimi-isiltili-prenses-model-gelinlik-mediha-cambaz-bridal-3_800x.jpg?v=1749036785',
       isSale: false,
       filters: {
         etekTipi: 'duz',
@@ -101,8 +88,7 @@ const Collection = () => {
       price: '17.999 TL',
       originalPrice: '19.999 TL',
       category: 'Prenses Kesim',
-      image: 'https://images.unsplash.com/photo-1590845947676-fa2576f401d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-      isNew: false,
+      image: 'https://www.davetcokelbisemyok.com/media/catalog/product/cache/401798936e1f39ab34bbb19329bd4ca1/g/e/gemma_gelinlik_dhbd.jpg',
       isSale: true,
       filters: {
         etekTipi: 'prenses',
@@ -155,7 +141,7 @@ const Collection = () => {
 
   // Açık olan filtreyi takip etmek için state
   const [openFilter, setOpenFilter] = useState(null);
-  
+
   // Seçili filtreleri tutacak state
   const [selectedFilters, setSelectedFilters] = useState({
     etekTipi: [],
@@ -170,7 +156,7 @@ const Collection = () => {
     return Object.entries(selectedFilters).every(([key, values]) => {
       // Eğer bu filtre için seçim yapılmamışsa tümünü göster
       if (values.length === 0) return true;
-      
+
       // Filtre değerlerinden en az biri eşleşiyorsa true döndür
       return values.includes(dress.filters[key]);
     });
@@ -216,11 +202,10 @@ const Collection = () => {
             <div key={key} className="relative">
               <button
                 onClick={() => toggleFilter(key)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-md font-semibold transition-all duration-300 ${
-                  selectedFilters[key].length > 0
-                    ? 'bg-rose-100 text-rose-700'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                }`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-md font-semibold transition-all duration-300 ${selectedFilters[key].length > 0
+                  ? 'bg-rose-100 text-rose-700'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
               >
                 {label}
                 {selectedFilters[key].length > 0 && (
@@ -228,22 +213,22 @@ const Collection = () => {
                     {selectedFilters[key].length}
                   </span>
                 )}
-                <svg 
-                  className={`w-4 h-4 transition-transform duration-200 ${openFilter === key ? 'rotate-180' : ''}`} 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
+                <svg
+                  className={`w-4 h-4 transition-transform duration-200 ${openFilter === key ? 'rotate-180' : ''}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
-              
+
               {/* Açılır Filtre Menüsü */}
               {openFilter === key && (
                 <div className="absolute z-20 mt-2 w-56 bg-white rounded-lg shadow-lg py-2">
                   <div className="max-h-60 overflow-y-auto">
                     {filterOptions[key].map((option) => (
-                      <label 
+                      <label
                         key={option.id}
                         className="flex items-center px-4 py-2 hover:bg-gray-50 cursor-pointer"
                       >
@@ -276,7 +261,7 @@ const Collection = () => {
               )}
             </div>
           ))}
-          
+
           {/* Seçili filtreleri göster */}
           {Object.values(selectedFilters).some(arr => arr.length > 0) && (
             <div className="w-full mt-4 flex flex-wrap gap-2">
@@ -286,7 +271,7 @@ const Collection = () => {
                   const option = filterOptions[filterType].find(opt => opt.id === value);
                   if (!option) return null;
                   return (
-                    <span 
+                    <span
                       key={`${filterType}-${value}`}
                       className="inline-flex items-center bg-rose-50 text-rose-700 text-sm px-4 py-1.5 rounded-full"
                     >
@@ -334,84 +319,41 @@ const Collection = () => {
         {/* Gelinlik Kartları */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredDresses.map((dress) => (
-            <div key={dress.id} className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+            <div
+              key={dress.id}
+              className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
+              onClick={()=> navigate(`/gelinlik-modeli/${dress.id}`)}
+              >
               <div className="relative overflow-hidden">
-                <img 
-                  src={dress.image} 
-                  alt={dress.name} 
-                  className="w-full h-96 object-cover transition-transform duration-500 group-hover:scale-105"
+                <img
+                  src={dress.image}
+                  alt={dress.name}
+                  className="w-full h-4/5 object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                
-                {/* Yeni ve İndirim Etiketleri */}
-                <div className="absolute top-4 right-4 flex flex-col space-y-2">
-                  {dress.isNew && (
-                    <span className="bg-white text-rose-300 text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                      YENİ
-                    </span>
-                  )}
-                  {dress.isSale && (
-                    <span className="bg-rose-300 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                      İNDİRİM
-                    </span>
-                  )}
-                </div>
-                
-                {/* Hover Butonları */}
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300 space-y-3">
-                    <button className="bg-white text-gray-800 hover:bg-rose-300 hover:text-white rounded-full w-10 h-10 flex items-center justify-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                      </svg>
-                    </button>
-                    <Link 
-                      to={`/urun/${dress.id}`}
-                      className="bg-white text-gray-800 hover:bg-rose-300 hover:text-white rounded-full w-10 h-10 flex items-center justify-center"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                      </svg>
-                    </Link>
-                  </div>
-                </div>
+
+                {/* Hover siyah opaklık sadece resmin üstüne */}
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300" />
               </div>
-              
+
               <div className="p-4">
                 <div className="flex justify-between items-start">
                   <div>
                     <h3 className="text-lg font-semibold text-gray-800">{dress.name}</h3>
                     <p className="text-sm text-gray-500">{dress.category}</p>
                   </div>
-                  <div className="text-right">
-                    {dress.originalPrice ? (
-                      <>
-                        <span className="text-gray-400 line-through text-sm mr-2">{dress.originalPrice}</span>
-                        <span className="text-rose-300 font-bold">{dress.price}</span>
-                      </>
-                    ) : (
-                      <span className="text-gray-800 font-bold">{dress.price}</span>
-                    )}
-                  </div>
                 </div>
-                
-                <Link 
-                  to={`/randevu?model=${encodeURIComponent(dress.name)}`}
-                  className="mt-4 block w-full bg-gray-100 hover:bg-rose-300 hover:text-white text-center py-2 rounded-md text-sm font-medium transition-colors duration-300"
-                >
-                  Randevu Al
-                </Link>
               </div>
             </div>
           ))}
         </div>
-        
+
+
         <div className="text-center mt-12">
-          <Link 
-            to="/koleksiyon" 
+          <Link
+            to="/koleksiyon"
             className="inline-block border-2 border-rose-300 text-rose-300 hover:bg-rose-300 hover:text-white font-medium py-3 px-8 rounded-full transition-colors duration-300"
           >
-            Tüm Koleksiyonu Gör
+            Tüm Modelleri Gör
           </Link>
         </div>
       </div>
