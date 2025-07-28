@@ -19,9 +19,6 @@ function RouterConfig() {
                         <Header />
                         <Hero />
                         <Collection /> 
-                        <About />
-                        <Features/>
-                        <Testimonials /> 
                     </>
                 } />
 
