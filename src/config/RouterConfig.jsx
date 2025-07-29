@@ -3,12 +3,8 @@ import { Route, Routes } from 'react-router-dom'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
 import Collection from '../components/Collection'
-import About from '../components/About'
-import Testimonials from '../components/Testimonials'
-import Footer from '../components/Footer'
 import ProductDetail from '../components/ProductDetail'
-import Features from '../components/Features'
-import FixHeader from '../components/FixHeader'
+import AllCollection from '../components/AllCollection'
 
 function RouterConfig() {
     return (
@@ -18,14 +14,21 @@ function RouterConfig() {
                     <>
                         <Header />
                         <Hero />
-                        <Collection /> 
+                        <Collection />
                     </>
                 } />
 
-                <Route path="/gelinlik-modeli/:id"  element={
+                <Route path="/gelinlik-modeli/:id" element={
                     <>
-                        <FixHeader/>
-                        <ProductDetail/>
+                        <Header />
+                        <ProductDetail />
+                    </>
+                } />
+
+                <Route path='tum-gelinlik-modelleri' element={
+                    <>
+                        <Header />
+                        <AllCollection/>
                     </>
                 } />
 
