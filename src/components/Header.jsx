@@ -11,35 +11,32 @@ const DressModelsDropdown = ({ isScrolled }) => {
     {
       title: 'Etep Tipi',
       models: [
-        { name: 'Prenses Gelinlik', path: '/gelinlik-modelleri/saten' },
-        { name: 'A kesim Gelinlik', path: '/gelinlik-modelleri/dantel' },
-        { name: 'Helen Gelinlik', path: '/gelinlik-modelleri/tul' },
-        { name: 'Balık Gelinlik', path: '/gelinlik-modelleri/tul' },
-        { name: 'Kısa Gelinlik', path: '/gelinlik-modelleri/tul' },
-        { name: 'Kabarık Gelinlik', path: '/gelinlik-modelleri/tul' },
+        { name: 'Prenses Gelinlik', path: '/gelinlik-modelleri/prenses' },
+        { name: 'A kesim Gelinlik', path: '/gelinlik-modelleri/A-kesim' },
+        { name: 'Helen Gelinlik', path: '/gelinlik-modelleri/helen' },
+        { name: 'Balık Gelinlik', path: '/gelinlik-modelleri/balik' },
+        { name: 'Kısa Gelinlik', path: '/gelinlik-modelleri/kisa' },
+        { name: 'Kabarık Gelinlik', path: '/gelinlik-modelleri/Kabarik' },
       ]
     },
     {
       title: 'Yaka Tipi',
       models: [
-        { name: 'Kayık Yaka Gelinlik', path: '/gelinlik-modelleri/uzun-kollu' },
-        { name: 'Hakim Yaka Gelinlik', path: '/gelinlik-modelleri/islemeli' },
-        { name: 'V Yaka Gelinlik', path: '/gelinlik-modelleri/prenses' },
-        { name: 'Kalp Yaka Gelinlik', path: '/gelinlik-modelleri/prenses' },
-        { name: 'Kare Yaka Gelinlik', path: '/gelinlik-modelleri/prenses' },
-        { name: 'V Yaka Gelinlik', path: '/gelinlik-modelleri/prenses' },
+        { name: 'Kayık Yaka Gelinlik', path: '/gelinlik-modelleri/kayik-yaka' },
+        { name: 'Hakim Yaka Gelinlik', path: '/gelinlik-modelleri/hakim-yaka' },
+        { name: 'V Yaka Gelinlik', path: '/gelinlik-modelleri/V-yaka' },
+        { name: 'Kalp Yaka Gelinlik', path: '/gelinlik-modelleri/kalp-yaka' },
+        { name: 'Kare Yaka Gelinlik', path: '/gelinlik-modelleri/kare-yaka' },
       ]
     },
     {
       title: 'Kol Tipi',
       models: [
-        { name: 'Uzun Kollu Gelinlik', path: '/gelinlik-modelleri/ozel-kesim' },
-        { name: 'Balon Kol Gelinlik', path: '/gelinlik-modelleri/el-isi' },
-        { name: 'Tek Omuz Gelinlik', path: '/gelinlik-modelleri/sifir-beden' },
-        { name: 'Düşük Omuz Gelinlik', path: '/gelinlik-modelleri/sifir-beden' },
-        { name: 'Kolsun/Sıfır Kol Gelinlik', path: '/gelinlik-modelleri/sifir-beden' },
-        { name: 'Tek Omuz Gelinlik', path: '/gelinlik-modelleri/sifir-beden' },
-
+        { name: 'Uzun Kollu Gelinlik', path: '/gelinlik-modelleri/uzun-kollu' },
+        { name: 'Balon Kol Gelinlik', path: '/gelinlik-modelleri/balon-kol' },
+        { name: 'Tek Omuz Gelinlik', path: '/gelinlik-modelleri/tek-omuz' },
+        { name: 'Düşük Omuz Gelinlik', path: '/gelinlik-modelleri/dusuk-omuz' },
+        { name: 'Kolsun/Sıfır Kol Gelinlik', path: '/gelinlik-modelleri/sifir-kol' },
       ]
     },
     {
@@ -51,7 +48,6 @@ const DressModelsDropdown = ({ isScrolled }) => {
         { name: 'Fransız Dantelli Gelinlik', path: '/gelinlik-modelleri/sifir-beden' },
         { name: 'Şifon Gelinlik', path: '/gelinlik-modelleri/sifir-beden' },
         { name: 'Simli Gelinlik', path: '/gelinlik-modelleri/sifir-beden' },
-
       ]
     },
     {
