@@ -183,7 +183,7 @@ const Collection = () => {
   const [activeCategory, setActiveCategory] = useState('Tümü');
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 px-1 md:px-2 lg:px-6 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-playfair font-semibold text-gray-800 mb-4 tracking-wide">Gelinlik Modellerimiz</h2>
@@ -317,29 +317,28 @@ const Collection = () => {
         </div>
 
         {/* Gelinlik Kartları */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6 xl:gap-8">
           {filteredDresses.map((dress) => (
             <div
               key={dress.id}
-              className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300"
-              onClick={()=> navigate(`/gelinlik-modeli/${dress.id}`)}
-              >
+              className="group bg-transparent rounded-lg overflow-hidden transition-shadow duration-300"
+              onClick={() => navigate(`/gelinlik-modeli/${dress.id}`)}
+            >
               <div className="relative overflow-hidden">
                 <img
                   src={dress.image}
                   alt={dress.name}
-                  className="w-full h-4/5 object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-auto object-contain transition-all duration-500 ease-in-out group-hover:scale-105"
                 />
-
                 {/* Hover siyah opaklık sadece resmin üstüne */}
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300" />
               </div>
 
-              <div className="p-4">
+              <div className="pt-2 pb-5 lg:py-3">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-800">{dress.name}</h3>
-                    <p className="text-sm text-gray-500">{dress.category}</p>
+                    <h3 className="text-md sm:text-lg font-semibold text-gray-800">{dress.name}</h3>
+                    <p className="text-sm text-gray-600">{dress.category}</p>
                   </div>
                 </div>
               </div>
@@ -350,7 +349,7 @@ const Collection = () => {
 
         <div className="text-center mt-12">
           <Link
-            to="/koleksiyon"
+            to="/tum-gelinlik-modelleri"
             className="inline-block border-2 border-rose-300 text-rose-300 hover:bg-rose-300 hover:text-white font-medium py-3 px-8 rounded-full transition-colors duration-300"
           >
             Tüm Modelleri Gör
