@@ -145,8 +145,8 @@ const AllCollection = () => {
     konsept: []
   });
 
-  const filteredDresses = dresses.filter(dress => 
-    Object.entries(selectedFilters).every(([key, values]) => 
+  const filteredDresses = dresses.filter(dress =>
+    Object.entries(selectedFilters).every(([key, values]) =>
       values.length === 0 || values.includes(dress.filters[key])
     )
   );
@@ -161,15 +161,16 @@ const AllCollection = () => {
   };
 
   return (
-    <section className="py-16 px-1 md:px-2 lg:px-6 bg-gray-50 min-h-screen">
+    <section className="py-28 px-1 md:px-2 lg:px-6 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-playfair font-semibold text-gray-800 mb-4">
+          <h2 className="text-3xl md:text-4xl font-playfair font-semibold text-gray-800 mb-4 tracking-wide">
             Tüm Gelinlik Modellerimiz
           </h2>
-          <div className="w-72 h-0.5 bg-gradient-to-r from-transparent via-rose-300 to-transparent mx-auto"></div>
+          <div className="w-80 h-0.5 bg-gradient-to-r from-transparent via-rose-300 to-transparent mx-auto"></div>
         </div>
 
+        {/* Filtreleme Menüsü */}
         <div className="flex flex-wrap justify-center gap-4 mb-10">
           {Object.entries({
             etekTipi: 'Etek Tipi',
@@ -181,11 +182,10 @@ const AllCollection = () => {
             <div key={key} className="relative">
               <button
                 onClick={() => setOpenFilter(openFilter === key ? null : key)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm md:text-base font-medium transition-colors ${
-                  selectedFilters[key].length > 0
-                    ? 'bg-rose-100 text-rose-700'
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
-                }`}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm md:text-base font-medium transition-colors ${selectedFilters[key].length > 0
+                  ? 'bg-rose-100 text-rose-700'
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
               >
                 {label}
                 {selectedFilters[key].length > 0 && (
@@ -194,9 +194,8 @@ const AllCollection = () => {
                   </span>
                 )}
                 <svg
-                  className={`w-4 h-4 transition-transform ${
-                    openFilter === key ? 'rotate-180' : ''
-                  }`}
+                  className={`w-4 h-4 transition-transform ${openFilter === key ? 'rotate-180' : ''
+                    }`}
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -210,10 +209,11 @@ const AllCollection = () => {
                 </svg>
               </button>
 
+              {/* Açılır Filtre Menüsü */}
               {openFilter === key && (
-                <div className="absolute z-10 mt-2 w-48 bg-white rounded-lg shadow-lg py-2">
+                <div className="absolute z-20 mt-2 w-56 bg-white rounded-lg shadow-lg py-2">
                   <div className="max-h-60 overflow-y-auto">
-                    {filterOptions[key]?.map((option) => (
+                    {filterOptions[key].map((option) => (
                       <label
                         key={option.id}
                         className="flex items-center px-4 py-2 hover:bg-gray-50 cursor-pointer"
@@ -228,48 +228,107 @@ const AllCollection = () => {
                       </label>
                     ))}
                   </div>
+                  {selectedFilters[key].length > 0 && (
+                    <div className="border-t border-gray-100 px-4 py-2">
+                      <button
+                        onClick={() => {
+                          setSelectedFilters(prev => ({
+                            ...prev,
+                            [key]: []
+                          }));
+                        }}
+                        className="text-xs text-rose-500 hover:text-rose-700"
+                      >
+                        Temizle
+                      </button>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
           ))}
         </div>
 
+
+        {/* Seçili filtreleri göster */}
+        {Object.values(selectedFilters).some(arr => arr.length > 0) && (
+          <div className="w-full mt-4 flex flex-wrap gap-2">
+            <span className="text-md text-gray-500 mr-2">Seçilenler:</span>
+            {Object.entries(selectedFilters).map(([filterType, values]) =>
+              values.map(value => {
+                const option = filterOptions[filterType].find(opt => opt.id === value);
+                if (!option) return null;
+                return (
+                  <span
+                    key={`${filterType}-${value}`}
+                    className="inline-flex items-center bg-rose-50 text-rose-700 text-sm px-4 py-1.5 rounded-full"
+                  >
+                    {option.label}
+                    <button
+                      onClick={() => handleFilterChange(filterType, value)}
+                      className="ml-2 text-rose-400 hover:text-rose-700"
+                    >
+                      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                    </button>
+                  </span>
+                );
+              })
+            )}
+            <button
+              onClick={() => {
+                setSelectedFilters({
+                  etekTipi: [],
+                  yakaTipi: [],
+                  kolTipi: [],
+                  kumas: [],
+                  konsept: []
+                });
+              }}
+              className="ml-auto text-md text-rose-500 hover:text-rose-700 flex items-center"
+            >
+              Tümünü Temizle
+              <svg className="w-3 h-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+              </svg>
+            </button>
+          </div>
+        )}
+
+
+        {/* filtrelenen ürün sayısı */}
         <div className="mb-6">
           <p className="text-gray-600">
             {filteredDresses.length} ürün bulundu
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+        {/* Gelinlik Kartları */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6 xl:gap-8">
           {filteredDresses.map((dress) => (
             <div
               key={dress.id}
-              className="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 cursor-pointer"
+              className="group bg-transparent rounded-lg overflow-hidden transition-shadow duration-300"
               onClick={() => navigate(`/gelinlik-modeli/${dress.id}`)}
             >
               <div className="relative overflow-hidden">
                 <img
                   src={dress.image}
                   alt={dress.name}
-                  className="w-full h-64 md:h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-auto object-contain transition-all duration-500 ease-in-out group-hover:scale-105"
                 />
-                {dress.isSale && (
-                  <div className="absolute top-2 right-2 bg-rose-500 text-white text-xs font-bold px-2 py-1 rounded">
-                    İNDİRİM
-                  </div>
-                )}
+                {/* Hover siyah opaklık sadece resmin üstüne */}
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300" />
               </div>
-              <div className="p-4">
-                <h3 className="font-medium text-gray-800 mb-1">{dress.name}</h3>
-                <div className="flex items-center justify-between">
-                  <span className="text-rose-500 font-medium">{dress.price}</span>
-                  {dress.originalPrice && (
-                    <span className="text-sm text-gray-400 line-through">
-                      {dress.originalPrice}
-                    </span>
-                  )}
+
+              <div className="pt-2 pb-5 lg:py-3">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="text-md sm:text-lg font-semibold text-gray-800">{dress.name}</h3>
+                    <p className="text-sm text-gray-600">{dress.category}</p>
+                  </div>
                 </div>
-                <p className="text-sm text-gray-500 mt-1">{dress.category}</p>
               </div>
             </div>
           ))}
