@@ -19,8 +19,6 @@ const Footer = () => {
     { icon: <FaInstagram />, url: '#' },
     { icon: <FaWhatsapp />, url: '#' },
     { icon: <FaTwitter />, url: '#' },
-
-
   ];
 
   const quickLinks = [
@@ -58,7 +56,7 @@ const Footer = () => {
           {/* Kategorize Gelinlik Modelleri */}
           <div className=' md:text-center'>
             <h4 className="font-semibold text-lg text-gray-800 mb-4">Modeller</h4>
-            <ul className="space-y-2">
+            <ul className="space-y-1">
               {dressCategories.map((category, index) => (
                 <li key={index}>
                   <a 
@@ -94,7 +92,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-200 pt-6">
           <div className="flex flex-col md:flex-row justify-center items-center">
-            <p className="text-sm text-gray-500 mb-4 md:mb-0">
+            <p className="text-sm text-gray-500 md:mb-0">
               &copy; {currentYear} Sevgilim Gelinlik. Tüm hakları saklıdır.
             </p>
           </div>
