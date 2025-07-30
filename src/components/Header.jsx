@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaBars, FaTimes, FaShoppingCart, FaUser, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { RxHamburgerMenu } from "react-icons/rx";
+import { IoMdClose } from "react-icons/io";
 
 const DressModelsDropdown = ({ isScrolled }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -221,11 +223,11 @@ const MobileDressModels = ({ onClose }) => {
   return (
     <div className="w-full">
       <div
-        className="flex items-center justify-between py-2 text-gray-700 hover:text-rose-300 rounded-md cursor-pointer"
+        className="flex items-center justify-between py-3 text-gray-700 hover:text-rose-300 rounded-md cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span>Gelinlik Modelleri</span>
-        {isOpen ? <FaChevronUp className="text-sm absolute left-40" /> : <FaChevronDown className="text-sm absolute left-40" />}
+        <span className="text-lg">Gelinlik Modelleri</span>
+        {isOpen ? <FaChevronUp className="text-sm" /> : <FaChevronDown className="text-sm" />}
       </div>
 
       {isOpen && (
@@ -233,7 +235,7 @@ const MobileDressModels = ({ onClose }) => {
           {dressCategories.map((category, catIndex) => (
             <div key={catIndex} className="mb-2">
               <div 
-                className="flex items-center justify-between py-2 px-2 text-gray-700 font-medium cursor-pointer"
+                className="flex transition duration-100 items-center justify-between py-2 px-2 text-gray-700 hover:bg-rose-50 font-medium cursor-pointer"
                 onClick={() => {
                   const newOpenCategories = [...openCategories];
                   newOpenCategories[catIndex] = !newOpenCategories[catIndex];
@@ -242,8 +244,8 @@ const MobileDressModels = ({ onClose }) => {
               >
                 <span>{category.title}</span>
                 {openCategories[catIndex] ? 
-                  <FaChevronUp className="text-xs absolute left-32" /> : 
-                  <FaChevronDown className="text-xs absolute left-32" />
+                  <FaChevronUp className="text-xs" /> : 
+                  <FaChevronDown className="text-xs" />
                 }
               </div>
               
@@ -266,7 +268,7 @@ const MobileDressModels = ({ onClose }) => {
           
           <div className="mt-4 pt-3 border-t border-gray-100">
             <Link
-              to="/gelinlik-modelleri/tum-modeller"
+              to="tum-gelinlik-modelleri"
               className="block w-full py-2 px-4 text-center bg-rose-500 text-white rounded-md hover:bg-rose-600 transition-colors text-sm font-medium"
               onClick={() => onClose()}
             >
@@ -285,7 +287,26 @@ const MobileDressModels = ({ onClose }) => {
 
 
 const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isOverlayVisible, setIsOverlayVisible] = useState(false);
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
+
+  const toggleMenu = () => {
+    if (!isMenuOpen) {
+      setIsMenuOpen(true);
+      setIsOverlayVisible(true);
+      // Small delay to allow the overlay to be rendered before showing the menu
+      setTimeout(() => setIsMenuVisible(true), 10);
+    } else {
+      setIsMenuVisible(false);
+      // Wait for the menu to slide out before hiding the overlay
+      setTimeout(() => {
+        setIsOverlayVisible(false);
+        // Small delay before resetting the menu state
+        setTimeout(() => setIsMenuOpen(false), 300);
+      }, 300);
+    }
+  };
 
   const navLinks = [
     { name: 'Ana Sayfa', path: '/' },
@@ -324,37 +345,56 @@ const Header = () => {
           </nav>
 
           {/* Mobile menu button */}
-          <div className="absolute left-5 lg:hidden flex items-center ">
+          <div className="absolute left-5 lg:hidden flex items-center">
             <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 hover:text-rose-300 focus:outline-none"
+              onClick={toggleMenu}
+              className="text-gray-700 hover:text-rose-300 focus:outline-none "
             >
-              {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+              {<RxHamburgerMenu size={24} />}
+              
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
-        {isOpen && (
-          <div className="absolute top-full left-0 w-full bg-white lg:hidden pl-8 pr-8 py-10">
-            <div className="flex flex-col space-y-4">
-              {navLinks.map((link) => (
-                <div key={link.name} className="w-full border-b border-gray-300">
-                  {link.name === 'Gelinlik Modelleri' ? (
-                    <MobileDressModels onClose={() => setIsOpen(false)} />
-                  ) : (
-                    <Link
-                      to={link.path}
-                      className="block py-2 text-gray-700 hover:text-rose-300 transition-colors"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      {link.name}
-                    </Link>
-                  )}
+        {isMenuOpen && (
+          <>
+            {/* Dark overlay with fade effect */}
+            <div 
+              className={`fixed inset-0 bg-black z-40 lg:hidden transition-opacity duration-300 ${
+                isOverlayVisible ? 'opacity-50' : 'opacity-0'
+              }`}
+              onClick={toggleMenu}
+            />
+            
+            {/* Mobile menu panel with slide-in effect */}
+            <div 
+              className={`fixed top-0 left-0 h-full w-96 bg-white z-50 shadow-2xl transform transition-transform duration-500 ease-in-out overflow-y-auto ${
+                isMenuVisible ? 'translate-x-0' : '-translate-x-full'
+              }`}
+              style={{ zIndex: 50 }}
+            >
+              <div className="p-6">
+                <div className="flex flex-col space-y-4">
+                  {navLinks.map((link) => (
+                    <div key={link.name} className="w-full border-b border-gray-200">
+                      {link.name === 'Gelinlik Modelleri' ? (
+                        <MobileDressModels onClose={toggleMenu}/>
+                      ) : (
+                        <Link
+                          to={link.path}
+                          className="block py-3 text-gray-700 hover:text-rose-400 transition-colors duration-200 text-lg"
+                          onClick={toggleMenu}
+                        >
+                          {link.name}
+                        </Link>
+                      )}
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </header>
