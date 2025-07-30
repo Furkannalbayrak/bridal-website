@@ -49,7 +49,7 @@ const Hero = () => {
         </p>
         <div className="flex flex-col sm:flex-row justify-center gap-4 w-8/12 mx-auto">
           <Link
-            to="/koleksiyon"
+            to="/tum-gelinlik-modelleri"
             className="bg-rose-300 hover:bg-rose-400 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300"
           >
             Gelinlik Modellerini Gör

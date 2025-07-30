@@ -135,7 +135,7 @@ const DressModelsDropdown = ({ isScrolled }) => {
             </div>
             <div className="mt-6 text-center">
               <Link
-                to="/gelinlik-modelleri/tum-modeller"
+                to="tum-gelinlik-modelleri"
                 className="inline-block py-3 px-8 bg-rose-500 text-white rounded-md hover:bg-rose-600 transition-colors font-medium"
                 onClick={() => setIsOpen(false)}
               >
@@ -289,7 +289,7 @@ const Header = () => {
 
   const navLinks = [
     { name: 'Ana Sayfa', path: '/' },
-    { name: 'Gelinlik Modelleri', path: '/gelinlik-modelleri' },
+    { name: 'Gelinlik Modelleri', path: '/tum-gelinlik-modelleri' },
     { name: 'Hakkımızda', path: '/hakkimizda' },
     { name: 'İletişim', path: '/iletisim' },
   ];
