@@ -187,7 +187,7 @@ const ProductDetail = () => {
         <div className="bg-white rounded-lg overflow-hidden">
           <div className="md:flex">
             {/* Ürün Resmi */}
-            <div className="md:w-1/2 p-6">
+            <div className="lg:w-7/12 md:w-9/12 p-6">
               <div className="h-auto rounded-lg overflow-hidden cursor-zoom-in" onClick={toggleImageModal}>
                 <img
                   src={product.image}
@@ -198,17 +198,17 @@ const ProductDetail = () => {
             </div>
 
             {/* Ürün Detayları */}
-            <div className="p-8 w-4/12">
-              <h1 className="text-2xl font-playfair font-bold text-gray-900 mb-4">
+            <div className="p-8 lg:w-6/12 md:w-8/12">
+              <h1 className="text-2xl font-playfair font-bold text-gray-900 mb-4 ">
                 {product.name}
               </h1>
 
-              <div className="border-t border-gray-300 pt-6">
+              <div className="border-t border-gray-300 pt-6 lg:w-10/12 md:w-11/12">
                 <h2 className="text-xl font-semibold text-gray-800 my-6">Ürün Detayları</h2>
                 <div className="space-y-3">
                   {
                     Object.entries(product.filters).map(([key, value]) => (
-                      <div key={key} className="flex justify-between border-b border-gray-100 pb-2">
+                      <div key={key} className="flex justify-between border-b border-gray-200 pb-2">
                         <span className="text-gray-600">{key}</span>
                         <span className="text-gray-900 font-medium">{value}</span>
                       </div>
