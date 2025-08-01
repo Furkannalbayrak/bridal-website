@@ -1,5 +1,5 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Header from '../components/Header'
 import Hero from '../components/Hero'
 import Collection from '../components/Collection'
@@ -28,7 +28,14 @@ function RouterConfig() {
                 <Route path='tum-gelinlik-modelleri' element={
                     <>
                         <Header />
-                        <AllCollection/>
+                        <AllCollection />
+                    </>
+                } />
+
+                <Route path='tum-gelinlik-modelleri/:category/:modelName' element={
+                    <>
+                        <Header />
+                        <AllCollection />
                     </>
                 } />
 
