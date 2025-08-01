@@ -1,8 +1,52 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const AllCollection = () => {
   const navigate = useNavigate();
+  const { category, modelName } = useParams();
+
+  const [selectedFilters, setSelectedFilters] = useState({
+    etekTipi: [],
+    yakaTipi: [],
+    kolTipi: [],
+    kumas: [],
+    konsept: []
+  });
+
+  // URL'den gelen parametrelere göre filtreleme yap
+  useEffect(() => {
+    if (category && modelName) {
+      const filterMap = {
+        'etek-tipi': 'etekTipi',
+        'yaka-tipi': 'yakaTipi',
+        'kol-tipi': 'kolTipi',
+        'kumas': 'kumas',
+        'tarzlar': 'konsept'
+      };
+
+      const filterCategory = filterMap[category];
+      if (filterCategory) {
+        setSelectedFilters(prev => ({
+          etekTipi: [],
+          yakaTipi: [],
+          kolTipi: [],
+          kumas: [],
+          konsept: [],
+          [filterCategory]: [modelName]
+        }));
+      }
+    } else {
+      // Eğer URL'de filtre yoksa tüm filtreleri sıfırla
+      setSelectedFilters({
+        etekTipi: [],
+        yakaTipi: [],
+        kolTipi: [],
+        kumas: [],
+        konsept: []
+      });
+    }
+  }, [category, modelName]);
+
   const [dresses] = useState([
     {
       id: 1,
@@ -15,8 +59,8 @@ const AllCollection = () => {
         etekTipi: 'prenses',
         yakaTipi: 'v-yaka',
         kolTipi: 'kolsuz',
-        kumas: 'tafeta',
-        konsept: 'klasik'
+        kumas: 'dantelli',
+        konsept: 'bohem'
       }
     },
     {
@@ -29,8 +73,8 @@ const AllCollection = () => {
       filters: {
         etekTipi: 'balik-sirti',
         yakaTipi: 'halka-yaka',
-        kolTipi: 'uzun-kol',
-        kumas: 'kadife',
+        kolTipi: 'uzun-kollu',
+        kumas: 'sifon',
         konsept: 'modern'
       }
     },
@@ -45,9 +89,9 @@ const AllCollection = () => {
       filters: {
         etekTipi: 'a-line',
         yakaTipi: 'yuvarlak',
-        kolTipi: 'yarim-kol',
-        kumas: 'organze',
-        konsept: 'romantik'
+        kolTipi: 'yarim-kollu',
+        kumas: 'saten',
+        konsept: 'vintage'
       }
     },
     {
@@ -60,9 +104,9 @@ const AllCollection = () => {
       filters: {
         etekTipi: 'prenses',
         yakaTipi: 'v-yaka',
-        kolTipi: 'uzun-kol',
-        kumas: 'dantel',
-        konsept: 'klasik'
+        kolTipi: 'uzun-kollu',
+        kumas: 'saten',
+        konsept: 'zarif'
       }
     },
     {
@@ -76,7 +120,7 @@ const AllCollection = () => {
         etekTipi: 'duz',
         yakaTipi: 'yuvarlak',
         kolTipi: 'kolsuz',
-        kumas: 'organze',
+        kumas: 'simli',
         konsept: 'modern'
       }
     },
@@ -91,9 +135,9 @@ const AllCollection = () => {
       filters: {
         etekTipi: 'prenses',
         yakaTipi: 'v-yaka',
-        kolTipi: 'yarim-kol',
-        kumas: 'tafeta',
-        konsept: 'romantik'
+        kolTipi: 'yarim-kollu',
+        kumas: 'tul',
+        konsept: 'bohem'
       }
     }
   ]);
@@ -101,49 +145,49 @@ const AllCollection = () => {
   const filterOptions = {
     etekTipi: [
       { id: 'prenses', label: 'Prenses' },
-      { id: 'balik-sirti', label: 'Balık Sırtı' },
-      { id: 'a-line', label: 'A-Line' },
-      { id: 'duz', label: 'Düz' },
-      { id: 'saten', label: 'Saten' }
+      { id: 'a-kesim', label: 'A kesim' },
+      { id: 'helen', label: 'Helen' },
+      { id: 'balik', label: 'Balık' },
+      { id: 'kisa', label: 'Kısa' },
+      { id: 'kabarik', label: 'Kabarık' }
+
     ],
     yakaTipi: [
+      { id: 'kayik-yaka', label: 'Kayık Yaka' },
+      { id: 'hakim-yaka', label: 'Hakim Yaka' },
       { id: 'v-yaka', label: 'V Yaka' },
-      { id: 'yuvarlak', label: 'Yuvarlak Yaka' },
-      { id: 'halka-yaka', label: 'Halka Yaka' },
+      { id: 'kalp-yaka', label: 'Kalp Yaka' },
       { id: 'askili', label: 'Askılı' },
+      { id: 'kare-yaka', label: 'Kare Yaka' },
       { id: 'omuz-acik', label: 'Omuz Açık' }
     ],
     kolTipi: [
+      { id: 'uzun-kollu', label: 'Uzun Kollu' },
+      { id: 'yarim-kollu', label: 'Yarım Kollu' },
+      { id: 'balon-kollu', label: 'Balon Kollu' },
+      { id: 'tek-omuz', label: 'Tek Omuz' },
+      { id: 'dusuk-omuz', label: 'Düşük Omuz' },
       { id: 'kolsuz', label: 'Kolsuz' },
-      { id: 'yarim-kol', label: 'Yarım Kol' },
-      { id: 'uzun-kol', label: 'Uzun Kol' },
-      { id: 'dantel-kol', label: 'Dantel Kol' },
-      { id: 'fermuarli', label: 'Fermuarlı' }
     ],
     kumas: [
-      { id: 'tafeta', label: 'Taşlı Tafta' },
-      { id: 'organze', label: 'Organze' },
-      { id: 'kadife', label: 'Kadife' },
-      { id: 'dantel', label: 'Dantel' },
-      { id: 'saten', label: 'Saten' }
+      { id: 'dantelli', label: 'Dantelli' },
+      { id: 'tul', label: 'Tül' },
+      { id: 'saten', label: 'Saten' },
+      { id: 'fransiz-dantelli', label: 'Fransız Dantelli' },
+      { id: 'sifon', label: 'Sifon' },
+      { id: 'simli', label: 'Simli' }
     ],
     konsept: [
-      { id: 'klasik', label: 'Klasik' },
-      { id: 'modern', label: 'Modern' },
-      { id: 'romantik', label: 'Romantik' },
-      { id: 'boho', label: 'Boho' },
-      { id: 'vintage', label: 'Vintage' }
+      { id: 'bohem', label: 'Bohem' },
+      { id: 'vintage', label: 'Vintage' },
+      { id: 'sade', label: 'Sade' },
+      { id: 'zarif', label: 'Zarif' },
+      { id: 'modern', label: 'Modern' }
     ]
   };
 
   const [openFilter, setOpenFilter] = useState(null);
-  const [selectedFilters, setSelectedFilters] = useState({
-    etekTipi: [],
-    yakaTipi: [],
-    kolTipi: [],
-    kumas: [],
-    konsept: []
-  });
+
 
   const filteredDresses = dresses.filter(dress =>
     Object.entries(selectedFilters).every(([key, values]) =>
