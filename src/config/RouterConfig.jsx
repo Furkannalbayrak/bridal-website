@@ -5,10 +5,12 @@ import Hero from '../components/Hero'
 import Collection from '../components/Collection'
 import ProductDetail from '../components/ProductDetail'
 import AllCollection from '../components/AllCollection'
+import ScrollToTop from '../scrollSetting/ScrollToTop'
 
 function RouterConfig() {
     return (
         <div>
+            <ScrollToTop/>
             <Routes>
                 <Route path='/' element={
                     <>
