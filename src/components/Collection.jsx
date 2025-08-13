@@ -337,8 +337,8 @@ const Collection = () => {
               <div className="pt-2 pb-5 lg:py-3">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h3 className="text-md sm:text-lg font-semibold text-gray-800">{dress.name}</h3>
-                    <p className="text-sm text-gray-600">{dress.category}</p>
+                    <h3 className="text-sm sm:text-lg font-semibold text-gray-800">{dress.name}</h3>
+                    <p className="text-[12px] sm:text-base text-gray-600">{dress.category}</p>
                   </div>
                 </div>
               </div>
