@@ -10,7 +10,7 @@ import ScrollToTop from '../scrollSetting/ScrollToTop'
 function RouterConfig() {
     return (
         <div>
-            <ScrollToTop/>
+            <ScrollToTop />
             <Routes>
                 <Route path='/' element={
                     <>
@@ -27,14 +27,14 @@ function RouterConfig() {
                     </>
                 } />
 
-                <Route path='tum-gelinlik-modelleri' element={
+                <Route path='/tum-gelinlik-modelleri' element={
                     <>
                         <Header />
                         <AllCollection />
                     </>
                 } />
 
-                <Route path='tum-gelinlik-modelleri/:category/:modelName' element={
+                <Route path='/tum-gelinlik-modelleri/:category/:modelName' element={
                     <>
                         <Header />
                         <AllCollection />

@@ -287,7 +287,7 @@ const MobileDressModels = ({ onClose }) => {
 
           <div className="mt-4 pt-3 border-t border-gray-100">
             <Link
-              to="tum-gelinlik-modelleri"
+              to="/tum-gelinlik-modelleri"
               className="block w-full py-2 px-4 text-center bg-rose-500 text-white rounded-md hover:bg-rose-600 transition-colors text-sm font-medium"
               onClick={() => onClose()}
             >
