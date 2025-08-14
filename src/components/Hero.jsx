@@ -40,7 +40,7 @@ const Hero = () => {
       ))}
 
       {/* İçerik */}
-      <div className="container mx-auto px-4 z-10 text-center text-white">
+      <div className="container mx-auto px-4 z-10 text-center text-white mb-20">
         <h1 className="text-4xl md:text-6xl font-playfair font-bold mb-6">
           Hayalinizdeki Gelinliği Keşfedin
         </h1>
@@ -50,7 +50,7 @@ const Hero = () => {
         <div className="flex flex-col sm:flex-row justify-center gap-4 w-8/12 mx-auto">
           <Link
             to="/tum-gelinlik-modelleri"
-            className="bg-rose-300 hover:bg-rose-400 text-white font-medium py-3 px-8 rounded-full transition-colors duration-300"
+            className="bg-rose-300 hover:bg-rose-400 text-white font-medium py-3 px-5 rounded-full transition-colors duration-300"
           >
             Gelinlik Modellerini Gör
           </Link>
@@ -65,7 +65,7 @@ const Hero = () => {
 
 
       {/* Aşağı ok ikonu */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-10">
+      <div className="absolute bottom-16 left-0 right-0 flex justify-center animate-bounce z-10">
         <svg
           width="30px"
           height="30px"
