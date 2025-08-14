@@ -387,7 +387,7 @@ const Header = () => {
 
             {/* Mobile menu panel with slide-in effect */}
             <div
-              className={`fixed top-0 left-0 h-full w-96 bg-white z-50 shadow-2xl transform transition-transform duration-500 ease-in-out overflow-y-auto ${isMenuVisible ? 'translate-x-0' : '-translate-x-full'
+              className={`fixed top-0 left-0 h-full w-72 bg-white z-50 shadow-2xl transform transition-transform duration-500 ease-in-out overflow-y-auto ${isMenuVisible ? 'translate-x-0' : '-translate-x-full'
                 }`}
               style={{ zIndex: 50 }}
             >
