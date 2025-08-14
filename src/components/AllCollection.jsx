@@ -208,10 +208,10 @@ const AllCollection = () => {
     <section className="py-28 px-1 md:px-2 lg:px-6 bg-gray-50 min-h-screen">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-playfair font-semibold text-gray-800 mb-4 tracking-wide">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-playfair font-semibold text-gray-800 mb-4 tracking-wide">
             Tüm Gelinlik Modellerimiz
           </h2>
-          <div className="w-80 h-0.5 bg-gradient-to-r from-transparent via-rose-300 to-transparent mx-auto"></div>
+          <div className="w-72 h-0.5 bg-gradient-to-r from-transparent via-rose-300 to-transparent mx-auto"></div>
         </div>
 
         {/* Filtreleme Menüsü */}
