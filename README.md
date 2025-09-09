@@ -35,8 +35,8 @@ Canlı Demo: `https://Furkannalbayrak.github.io/bridal-website/`
 
 
 ## 💻 Kullanılan Teknolojiler
-- React 19
-- Vite 7
+- React
+- Vite
 - Tailwind CSS
 - React Router DOM 7 (HashRouter)
 - React Icons
