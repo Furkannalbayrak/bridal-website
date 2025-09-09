@@ -47,7 +47,7 @@ Canlı Demo: `https://Furkannalbayrak.github.io/bridal-website/`
 
 Yerelde çalıştırmak için:
 
-1. Node.js kurulu olmalı: `https://nodejs.org` (LTS önerilir)
+1. Node.js bilgisayarınızda kurulu olmalı: https://nodejs.org (LTS sürümünü yükleyin)
 2. Projeyi indirin/klonlayın
 3. Proje klasörüne girin
 4. Terminal/Powershell’i bu klasörde açın
