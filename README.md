@@ -1,4 +1,4 @@
-# Bridal Website (Gelinlik Sitesi)
+# Bridal Website
 
 Modern ve şık bir gelinlik tanıtım/ticaret sitesidir. Vitrin, koleksiyon, model detay ve tüm koleksiyon sayfalarından oluşur. Vite ile oluşturuldu, Tailwind CSS ile stillendi ve GitHub Pages üzerinde yayınlanacak şekilde yapılandırıldı.
 
