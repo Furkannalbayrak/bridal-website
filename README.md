@@ -55,12 +55,13 @@ Yerelde çalıştırmak için:
     ```bash
     npm install
     ```
+    
 6. Geliştirme sunucusunu başlatın
     ```bash
     npm run dev
     ```
+    
 7. Tarayıcıda verilen yerel adresi açın (örn. `http://localhost:5173`).
-
 
 ### Build Alma
 1. Üretim için optimize build:
