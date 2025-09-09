@@ -34,11 +34,12 @@ Canlı Demo: `https://Furkannalbayrak.github.io/bridal-website/`
 - `vite.config.js`: GitHub Pages için `base: '/bridal-website/'` ayarı.
 
 
-## 💻 Kullanılan Teknolojiler
+## 💻 Kullanılan Teknolojiler ve Yazılım Dilleri
 - React
 - Vite
+- JavaScript (ES Modules)
 - Tailwind CSS
-- React Router DOM 7 (HashRouter)
+- React Router DOM (HashRouter)
 - React Icons
 
 
